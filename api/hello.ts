@@ -1,11 +1,16 @@
-import { Context, Event } from "https://deno.land/x/lambda/mod.ts";
+import {
+  APIGatewayProxyEvent,
+  APIGatewayProxyResult,
+  Context
+} from "https://deno.land/x/lambda/mod.ts";
 
-export async function handler(event: Event, context: Context) {
+export async function handler(
+  event: APIGatewayProxyEvent,
+  context: Context
+): Promise<APIGatewayProxyResult> {
   return {
-    statusCode: 200,
-    body: `This is deno  🦕 running on ZEIT Now.`,
-    headers: {
-      "content-type": "text/html; charset=utf-8"
-    }
+    body: `Welcome to deno ${Deno.version.deno} 🦕`,
+    headers: { "content-type": "text/html;charset=utf8" },
+    statusCode: 200
   };
 }
